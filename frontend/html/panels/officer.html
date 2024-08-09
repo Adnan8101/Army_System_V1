@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Officer Dashboard</title>
+    <link rel="stylesheet" href="../../css/panels/officer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Officer Dashboard</h2>
+        <a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a>
+        <a href="#" onclick="showSection('analytics')"><i class="fas fa-chart-bar"></i> Analytics</a>
+        <a href="#" onclick="showSection('employees')"><i class="fas fa-users"></i> Employees</a>
+        <a href="#" onclick="showSection('settings')"><i class="fas fa-cogs"></i> Settings</a>
+        <a href="#" onclick="showSection('orders')"><i class="fas fa-shopping-cart"></i> Orders</a>
+        <a href="#" onclick="showSection('quotations')"><i class="fas fa-file-alt"></i> Quotations</a>
+        <a href="#" onclick="showSection('pending-registrations')"><i class="fas fa-user-plus"></i> Approve Registrations</a>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <input type="text" placeholder="Search..."><i class="fas fa-search"></i>
+        </div>
+        <div id="home" class="dashboard tab-content active">
+            <div class="card">
+                <h3>Recent Orders</h3>
+                <div class="recent-orders">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Project Name</th>
+                                <th>Quantity</th>
+                                <th>Amount</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent-orders-table">
+                            <tr>
+                                <td colspan="5">No data available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Recent Buyers</h3>
+                <div class="recent-buyers">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Template Number</th>
+                                <th>License Number</th>
+                                <th>Buyer Name</th>
+                                <th>Product Purchased</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent-buyers-table">
+                            <tr>
+                                <td colspan="6">No data available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="analytics" class="dashboard tab-content">
+            <div class="analytics-grid">
+                <div class="card small-card">
+                    <h3>Data Overview</h3>
+                    <canvas id="overviewChart" class="chart"></canvas>
+                </div>
+                <div class="card small-card">
+                    <h3>Budget Monitor</h3>
+                    <canvas id="budgetChart" class="chart"></canvas>
+                </div>
+                <div class="card small-card">
+                    <h3>Weekly Status</h3>
+                    <canvas id="weeklyChart" class="chart"></canvas>
+                </div>
+                <div class="card small-card">
+                    <h3>Project Progress</h3>
+                    <canvas id="projectChart" class="chart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div id="orders" class="dashboard tab-content">
+            <div class="card">
+                <h3>Create Order</h3>
+                <button onclick="showCreateOrderForm()">Create Order</button>
+                <div id="create-order-form" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeCreateOrderForm()">&times;</span>
+                        <div class="form-container">
+                            <form id="create-order">
+                                <label for="orderName">Name:</label>
+                                <input type="text" id="orderName" name="orderName" required>
+                                <label for="orderQuantity">Quantity:</label>
+                                <input type="number" id="orderQuantity" name="orderQuantity" required>
+                                <label for="orderDate">Expected Delivery Date:</label>
+                                <input type="date" id="orderDate" name="orderDate" required>
+                                <label for="orderPrice">Maximum Price ($):</label>
+                                <input type="number" id="orderPrice" name="orderPrice" required>
+                                <label for="orderDescription">Description:</label>
+                                <textarea id="orderDescription" name="orderDescription" required></textarea>
+                                <button type="submit">Post Order</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Active Orders</h3>
+                <div class="active-orders">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Expected Delivery Date</th>
+                                <th>Maximum Price</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="active-orders-table">
+                            <tr>
+                                <td colspan="7">No data available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Order History</h3>
+                <div class="order-history">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Expected Delivery Date</th>
+                                <th>Maximum Price</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="order-history-table">
+                            <tr>
+                                <td colspan="7">No data available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="quotations" class="dashboard tab-content">
+            <div class="card">
+                <h3>Quotations</h3>
+                <div class="quotations">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>SR.NO</th>
+                                <th>COMPANY NAME</th>
+                                <th>EMAIL</th>
+                                <th>FORM</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quotations-table">
+                            <tr>
+                                <td colspan="4">No data available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="pending-registrations" class="dashboard tab-content">
+            <div class="card">
+                <h3>Pending Registrations</h3>
+                <div class="pending-registrations">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>License Number</th>
+                                <th>Phone Number</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pending-registrations-table">
+                            <tr>
+                                <td colspan="5">No data available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for approval -->
+    <div id="approval-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeApprovalModal()">&times;</span>
+            <h3>Approve Registration</h3>
+            <p>Are you sure you want to approve this registration?</p>
+            <button onclick="confirmApproval()">Approve</button>
+        </div>
+    </div>
+
+    <!-- Modal for rejection -->
+    <div id="rejection-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRejectionModal()">&times;</span>
+            <h3>Reject Registration</h3>
+            <label for="rejection-reason">Reason for rejection:</label>
+            <textarea id="rejection-reason" rows="4" cols="50"></textarea>
+            <button onclick="confirmRejection()">Reject</button>
+        </div>
+    </div>
+
+    <script src="../../js/panels/officer.js"></script>
+
+</body>
+</html>

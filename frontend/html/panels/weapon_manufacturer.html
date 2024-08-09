@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weapon Manufacturer Dashboard</title>
+    <link rel="stylesheet" href="../../css/panels/weapon_manufacturer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Weapon Manufacturer Dashboard</h2>
+        <a href="#" onclick="showSection('marketplace')"><i class="fas fa-store"></i> Marketplace Submission</a>
+        <a href="#" onclick="showSection('submitted-quotations')"><i class="fas fa-file-alt"></i> Submitted Quotations</a>
+        <a href="#" onclick="showSection('order-history')"><i class="fas fa-history"></i> Order History</a>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <input type="text" placeholder="Search..."><i class="fas fa-search"></i>
+        </div>
+        <div id="marketplace" class="tab-content active">
+            <div class="card">
+                <h3>Marketplace Submission</h3>
+                <table id="marketplace-orders-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Expected Delivery Date</th>
+                            <th>Maximum Price</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="7">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="submitted-quotations" class="tab-content">
+            <div class="card">
+                <h3>Submitted Quotations</h3>
+                <table id="submitted-quotations-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Company Name</th>
+                            <th>Email</th>
+                            <th>Summary</th>
+                            <th>Quotation File</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="6">No data available</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="order-history" class="tab-content">
+            <div class="card">
+                <h3>Order History</h3>
+                <table id="order-history-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Expected Delivery Date</th>
+                            <th>Maximum Price</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="7">No data available</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="quotation-form-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeQuotationForm()">&times;</span>
+            <form id="file-quotation-form" onsubmit="fileQuotation(event)">
+                <input type="hidden" id="quotationOrderId" name="orderId">
+                <label for="wmName">Company Name:</label>
+                <input type="text" id="wmName" name="wmName" required>
+                <label for="wmEmail">Email:</label>
+                <input type="email" id="wmEmail" name="email" required>
+                <label for="quotationSummary">Summary:</label>
+                <textarea id="quotationSummary" name="summary" required></textarea>
+                <label for="quotationFile">Quotation File (PDF, max 10MB):</label>
+                <input type="file" id="quotationFile" name="quotationFile" accept="application/pdf" required>
+                <button type="submit">Submit Quotation</button>
+            </form>
+        </div>
+    </div>
+    <div id="ignore-confirmation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeIgnoreConfirmation()">&times;</span>
+            <p>Are you sure you want to ignore this order?</p>
+            <button id="confirmIgnoreButton" onclick="confirmIgnore()">Yes</button>
+            <button onclick="closeIgnoreConfirmation()">No</button>
+        </div>
+    </div>
+    <script src="../../js/panels/weapon_manufacturer.js"></script>
+</body>
+</html>

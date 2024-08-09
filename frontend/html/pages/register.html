@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../../css/common/style.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-box">
+            <div class="logo-container">
+                <img src="../../images/logo.png" alt="Eagle Logo" class="logo">
+            </div>
+            <h2>Register</h2>
+            <form id="registerForm">
+                <input type="text" id="name" name="name" placeholder="Name" required><br>
+                <select id="userType" name="userType" required>
+                    <option value="AO">Army Officer</option>
+                    <option value="WM">Weapon Manufacturer</option>
+                    <option value="WA">Agency</option>
+                </select><br>
+                <input type="email" id="email" name="email" placeholder="Email" required><br>
+                <input type="text" id="licenseNumber" name="licenseNumber" placeholder="License Number" required><br>
+                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required><br>
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="/html/pages/login.html">Login here</a></p>
+            <div id="registerMessage"></div>
+        </div>
+    </div>
+
+    <!-- Pop-up for success -->
+    <div id="popup-success" class="popup success">
+        <div class="icon success-icon">&#10004;</div>
+        <h3>SUCCESS</h3>
+        <p></p>
+        <button class="btn" onclick="closePopup('popup-success')">Continue</button>
+    </div>
+
+    <!-- Pop-up for error -->
+    <div id="popup-error" class="popup error">
+        <div class="icon error-icon">&#10060;</div>
+        <h3>ERROR!</h3>
+        <p>There was an error with your registration.</p>
+        <button class="btn error-btn" onclick="closePopup('popup-error')">Try Again</button>
+    </div>
+
+    <script src="../../js/pages/register.js"></script>
+</body>
+</html>

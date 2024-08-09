@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="../../css/pages/otp-verification.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="logo-container">
+            <img src="../../images/logo.png" alt="Eagle Logo" class="logo">
+        </div>
+        <h2>OTP Verification</h2>
+        <form id="otpVerificationForm">
+            <input type="text" id="userId" name="userId" placeholder="User ID" readonly>
+            <div class="otp-input-container">
+                <input type="text" maxlength="1" class="otp-input" data-index="0">
+                <input type="text" maxlength="1" class="otp-input" data-index="1">
+                <input type="text" maxlength="1" class="otp-input" data-index="2">
+                <input type="text" maxlength="1" class="otp-input" data-index="3">
+                <input type="text" maxlength="1" class="otp-input" data-index="4">
+                <input type="text" maxlength="1" class="otp-input" data-index="5">
+            </div>
+            <button type="submit">Verify OTP</button>
+        </form>
+        <div id="message"></div>
+    </div>
+    <script src="../../js/pages/otp-verification.js"></script>
+</body>
+</html>

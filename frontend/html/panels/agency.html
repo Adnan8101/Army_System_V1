@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency Dashboard</title>
+    <link rel="stylesheet" href="../../css/panels/agency.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Agency Dashboard</h2>
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="#"><i class="fas fa-users"></i> Employees</a>
+        <a href="#"><i class="fas fa-chart-bar"></i> Analytics</a>
+        <a href="#"><i class="fas fa-cogs"></i> Settings</a>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <input type="text" placeholder="Search..."><i class="fas fa-search"></i>
+        </div>
+        <div class="dashboard">
+            <div class="card">
+                <h3>Data Overview</h3>
+                <div class="data-overview chart"></div>
+            </div>
+            <div class="card">
+                <h3>Recent Orders</h3>
+                <div class="recent-orders">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>SKU</th>
+                                <th>Invoice#</th>
+                                <th>Customer Name</th>
+                                <th>Status</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PO-10521</td>
+                                <td>INV-001001</td>
+                                <td>Elizabeth W.</td>
+                                <td class="status-paid">Paid</td>
+                                <td>$1200.00</td>
+                            </tr>
+                            <tr>
+                                <td>PO-53251</td>
+                                <td>INV-01112</td>
+                                <td>Doris R.</td>
+                                <td class="status-pending">Pending</td>
+                                <td>$5685.00</td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Weekly Status</h3>
+                <div class="weekly-status chart"></div>
+            </div>
+            <div class="card">
+                <h3>Recent Buyers</h3>
+                <div class="recent-buyers">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Buyer</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Kristopher Candy</td>
+                                <td>Electronics</td>
+                                <td>$1,021</td>
+                            </tr>
+                            <tr>
+                                <td>Lawrence Fowler</td>
+                                <td>Appliances</td>
+                                <td>$2,021</td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
